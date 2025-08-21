@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Würth UK - Customer Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #e30613;
+            --primary-dark: #c10510;
+            --secondary: #2c3e50;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --dark: #212529;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 20px;
+        }
+        
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            max-width: 200px;
+            filter: brightness(0) invert(1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-section {
+            padding: 40px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--secondary);
+            font-size: 1.8rem;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .contact-card {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 28px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover .card-icon {
+            transform: scale(1.1);
+            background: var(--primary-dark);
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .card-value {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--dark);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+        
+        .card-value:hover {
+            color: var(--primary);
+        }
+        
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .card-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+        }
+        
+        .card-btn:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
+            margin: 30px 0;
+        }
+        
+        .additional-info {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .info-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .business-hours {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+        
+        .hours-list {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .hours-list li {
+            padding: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .day {
+            font-weight: 500;
+        }
+        
+        .time {
+            color: var(--gray);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--gray);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            background: var(--light);
+        }
+        
+        .footer-links {
+            margin-top: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .copy-btn {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 18px;
+            margin-left: 10px;
+            transition: color 0.3s;
+        }
+        
+        .copy-btn:hover {
+            color: var(--primary);
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .notification.show {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-section {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            font-size: 18px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/W%C3%BCrth_logo.svg/1280px-W%C3%BCrth_logo.svg.png" alt="Würth Logo" class="logo">
+            </div>
+            <h1>Würth UK Customer Service</h1>
+            <p class="subtitle">Your trusted partner for quality products and exceptional service</p>
+        </header>
+        
+        <section class="contact-section">
+            <h2 class="section-title">Get In Touch</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="card-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="card-title">Email Us</h3>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <a href="mailto:Wurth.uk.cs@gmail.com" class="card-value">Wurth.uk.cs@gmail.com</a>
+                        <button class="copy-btn" onclick="copyToClipboard('Wurth.uk.cs@gmail.com', 'Email address')">
+                            <i class="far fa-copy"></i>
+                        </button>
+                    </div>
+                    <p class="card-desc">Send us an email for customer support, product inquiries, or any questions you may have.</p>
+                    <a href="mailto:Wurth.uk.cs@gmail.com" class="card-btn">Send Message</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="card-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3 class="card-title">Telegram</h3>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <a href="tg://resolve?domain=WurthUK" class="card-value">@WurthUK</a>
+                        <button class="copy-btn" onclick="copyToClipboard('@WurthUK', 'Telegram username')">
+                            <i class="far fa-copy"></i>
+                        </button>
+                    </div>
+                    <p class="card-desc">Message us on Telegram for quick responses and instant support.</p>
+                    <a href="tg://resolve?domain=WurthUK" class="card-btn">Message Us</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="card-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="card-title">Website</h3>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <a href="http://www.wuerth.de" target="_blank" class="card-value">www.wuerth.de</a>
+                        <button class="copy-btn" onclick="copyToClipboard('www.wuerth.de', 'Website address')">
+                            <i class="far fa-copy"></i>
+                        </button>
+                    </div>
+                    <p class="card-desc">Visit our website to explore our products, services, and company information.</p>
+                    <a href="http://www.wuerth.de" target="_blank" class="card-btn">Visit Site</a>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="additional-info">
+                <h3 class="info-title">Business Hours</h3>
+                <div class="business-hours">
+                    <ul class="hours-list">
+                        <li><span class="day">Monday - Friday</span> <span class="time">8:00 AM - 6:00 PM</span></li>
+                        <li><span class="day">Saturday</span> <span class="time">9:00 AM - 2:00 PM</span></li>
+                        <li><span class="day">Sunday</span> <span class="time">Closed</span></li>
+                    </ul>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>© 2023 Würth UK. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+            </div>
+        </footer>
+    </div>
+    
+    <div class="notification" id="notification">Copied to clipboard!</div>
+
+    <script>
+        function copyToClipboard(text, type) {
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification(`${type} copied to clipboard!`);
+            }).catch(err => {
+                showNotification('Failed to copy: ' + err);
+            });
+        }
+        
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+        
+        // Add animation to cards on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.contact-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
